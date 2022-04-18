@@ -1,35 +1,35 @@
 import mongoose from "../../database/conn";
 
-const StockModel = new mongoose.Schema(
+const ProductModel = new mongoose.Schema(
     {
         code: {
             type: String,
             required: false,
         },
-        productQuantity: {
+        categoryId: {
+            type: String,
+            required: true,
+        },
+        name: {
+            type: String,
+            required: true,
+        },
+        unit: {
+            type: String,
+            required: true,
+        },
+        price: {
             type: Number,
             required: true,
         },
-        productIn: {
+        cost: {
             type: Number,
             required: true,
-        },
-        productOut: {
-            type: Number,
-            required: true,
-        },
-        productPrice: {
-            type: Number,
-            required: true,
-        },
-        productCost: {
-            type: Number,
-            required: true,
-        },
+        }
     },
     {
         timestamps: true,
     }
 );
 
-export default mongoose.model("stock", StockModel);
+export default mongoose.model("product", ProductModel);

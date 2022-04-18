@@ -1,9 +1,9 @@
-import StockModel from "../models/stockModel";
+import ProductModel from "../models/productkModel";
 
-let stock = {};
+let product = {};
 
-export default class stockController {
-    static async stock(req, res) {
+export default class productController {
+    static async product(req, res) {
         const {
             code,
             productQuantity,
@@ -13,7 +13,7 @@ export default class stockController {
             productCost,
         } = req.body;
 
-        stock = {
+        product = {
             code,
             productQuantity,
             productIn,
@@ -23,8 +23,8 @@ export default class stockController {
         };
 
         try {
-            const addStock = await StockModel.create(stock);
-            res.status(200).send({ message: "Stock adicionado" });
+            const addProduct = await ProductModel.create(product);
+            res.status(200).send({ message: "Produto adicionado" });
             return;
         } catch (err) {
             res.status(404).send({ message: "Insira todas as informações" });

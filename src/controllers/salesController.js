@@ -1,9 +1,9 @@
-import StockModel from "../models/stockModel";
+import SalesModel from "../models/salesModel";
 
-let stock = {};
+let sales = {};
 
-export default class stockController {
-    static async stock(req, res) {
+export default class salesController {
+    static async sales(req, res) {
         const {
             code,
             productQuantity,
@@ -13,7 +13,7 @@ export default class stockController {
             productCost,
         } = req.body;
 
-        stock = {
+        sales = {
             code,
             productQuantity,
             productIn,
@@ -23,8 +23,8 @@ export default class stockController {
         };
 
         try {
-            const addStock = await StockModel.create(stock);
-            res.status(200).send({ message: "Stock adicionado" });
+            const addSales = await SalesModel.create(sales);
+            res.status(200).send({ message: "Venda adicionada" });
             return;
         } catch (err) {
             res.status(404).send({ message: "Insira todas as informações" });
