@@ -5,15 +5,21 @@ let client = {};
 export default class clientController {
     static async client(req, res) {
         const {
+            clientType,
             name,
-            nick,
-            CPF
+            fantasyName,
+            CpfCnpj,
+            inscription
+
+
         } = req.body;
 
         client = {
+            clientType,
             name,
-            nick,
-            CPF
+            fantasyName,
+            CpfCnpj,
+            inscription
         };
 
         try {

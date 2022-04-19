@@ -1,21 +1,23 @@
 import ContactModel from "../models/contactModel";
 
-let contact = {};
+let contactInfo = {};
 
 export default class contactController {
     static async contact(req, res) {
         const {
+            clientId,
             type,
             contact
         } = req.body;
 
-        contact = {
+        contactInfo = {
+            clientId,
             type,
             contact
         };
 
         try {
-            const addContact = await ContactModel.create(contact);
+            const addContact = await ContactModel.create(contactInfo);
             res.status(200).send({ message: "Contato adicionado" });
             return;
         } catch (err) {

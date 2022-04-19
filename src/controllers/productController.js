@@ -1,4 +1,4 @@
-import ProductModel from "../models/productkModel";
+import ProductModel from "../models/productModel";
 
 let product = {};
 
@@ -6,20 +6,21 @@ export default class productController {
     static async product(req, res) {
         const {
             code,
-            productQuantity,
-            productIn,
-            productOut,
-            productPrice,
-            productCost,
+            categoryId,
+            name,
+            unit,
+            price,
+            cost
+
         } = req.body;
 
         product = {
             code,
-            productQuantity,
-            productIn,
-            productOut,
-            productPrice,
-            productCost,
+            categoryId,
+            name,
+            unit,
+            price,
+            cost
         };
 
         try {

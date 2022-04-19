@@ -5,7 +5,9 @@ let address = {};
 export default class addressController {
     static async address(req, res) {
         const {
+            clientId,
             street,
+            number,
             complement,
             district,
             zipCode,
@@ -16,7 +18,9 @@ export default class addressController {
         } = req.body;
 
         address = {
+            clientId,
             street,
+            number,
             complement,
             district,
             zipCode,
