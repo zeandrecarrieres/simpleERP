@@ -1,11 +1,11 @@
-import SaleProductModel from "../models/saleProductModel";
+import IncomeProductModel from "../models/incomeProductModel";
 
-let sales = {};
+let income = {};
 
-export default class saleProductController {
-    static async saleProduct(req, res) {
+export default class incomeProductController {
+    static async incomeProduct(req:any, res:any) {
         const {
-            saleId,
+            incomeId,
             productId,
             productQuantity,
             discount,
@@ -13,8 +13,8 @@ export default class saleProductController {
 
         } = req.body;
 
-        sales = {
-            saleId,
+        income = {
+            incomeId,
             productId,
             productQuantity,
             discount,
@@ -22,7 +22,7 @@ export default class saleProductController {
         };
 
         try {
-            const addSaleProduct = await SaleProductModel.create(sales);
+            const addIncomeProduct = await IncomeProductModel.create(income);
             res.status(200).send({ message: "Lista de produtos adicionada" });
             return;
         } catch (err) {

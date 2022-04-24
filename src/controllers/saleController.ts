@@ -3,7 +3,7 @@ import SaleModel from "../models/saleModel";
 let sale = {};
 
 export default class saleController {
-    static async sale(req, res) {
+    static async sale(req:any, res:any) {
         const {
             clientId,
             salerId

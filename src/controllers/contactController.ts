@@ -3,7 +3,7 @@ import ContactModel from "../models/contactModel";
 let contactInfo = {};
 
 export default class contactController {
-    static async contact(req, res) {
+    static async contact(req:any, res:any) {
         const {
             clientId,
             type,

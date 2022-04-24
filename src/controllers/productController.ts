@@ -3,11 +3,12 @@ import ProductModel from "../models/productModel";
 let product = {};
 
 export default class productController {
-    static async product(req, res) {
+    static async product(req:any, res:any) {
         const {
             code,
             categoryId,
             name,
+            description,
             unit,
             price,
             cost
@@ -18,6 +19,7 @@ export default class productController {
             code,
             categoryId,
             name,
+            description,
             unit,
             price,
             cost

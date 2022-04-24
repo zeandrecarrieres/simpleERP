@@ -4,8 +4,9 @@ const server = express();
 
 server.use(express.json());
 const corsOptions = {
-    origin: "http://localhost",
-    optionsSuccessStatus: 200, // for some legagy browsers
+  credentials: true,
+  origin: "http://localhost:3000",
+  optionsSuccessStatus: 200, // for some legagy browsers
 };
 
 server.use(cors(corsOptions));
@@ -19,8 +20,8 @@ import contactRouter from "../src/routers/contactRouter";
 import productRouter from "../src/routers/productRouter";
 import saleRouter from "../src/routers/saleRouter";
 import saleProductRouter from "../src/routers/saleProductRouter";
-
-
+import supplierRouter from "../src/routers/supplierRouter";
+import incomeProductRouter from "../src/routers/incomeProductRouter";
 
 server.use(homeRouter);
 server.use(stockRouter);
@@ -31,5 +32,7 @@ server.use(contactRouter);
 server.use(productRouter);
 server.use(saleRouter);
 server.use(saleProductRouter);
+server.use(supplierRouter);
+server.use(incomeProductRouter);
 
 export default server;

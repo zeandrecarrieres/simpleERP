@@ -3,9 +3,10 @@ import AddressModel from "../models/addressModel";
 let address = {};
 
 export default class addressController {
-    static async address(req, res) {
+    static async address(req:any, res:any) {
         const {
-            clientId,
+            referenceId,
+            type,
             street,
             number,
             complement,
@@ -18,7 +19,8 @@ export default class addressController {
         } = req.body;
 
         address = {
-            clientId,
+            referenceId,
+            type,
             street,
             number,
             complement,

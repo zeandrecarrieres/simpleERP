@@ -3,7 +3,7 @@ import StockModel from "../models/stockModel";
 let stock = {};
 
 export default class stockController {
-    static async stock(req, res) {
+    static async stock(req:any, res:any) {
         const {
             code,
             productQuantity,

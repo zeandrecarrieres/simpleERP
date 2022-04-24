@@ -14,6 +14,10 @@ const ProductModel = new mongoose.Schema(
             type: String,
             required: true,
         },
+        description: {
+            type: String,
+            required: false,
+        },
         unit: {
             type: String,
             required: true,

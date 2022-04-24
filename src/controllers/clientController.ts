@@ -3,7 +3,7 @@ import ClientModel from "../models/clientModel";
 let client = {};
 
 export default class clientController {
-    static async client(req, res) {
+    static async client(req:any, res:any) {
         const {
             clientType,
             name,

@@ -3,7 +3,7 @@ import CategoryModel from "../models/categoryModel";
 let category = {};
 
 export default class categoryController {
-    static async category(req, res) {
+    static async category(req:any, res:any) {
         const {
             name
         } = req.body;
