@@ -1,12 +1,13 @@
 import userModel from "../models/userModel";
 import tools from "../helpers/tools";
 import auth from "../auth";
+import jwt from "jsonwebtoken";
 
 export default class userController {
- 
   //++++++++++++++++++++ User Create +++++++++++++++++++++++++++++++++++
-  static async create(req:any, res:any)  {
+  static async create(req: any, res: any) {
     const { name, email, password, access } = req.body;
+    console.info(req.body);
     // Validações (usuário e senha)
     if (!name || !email || !password || !access) {
       res.status(403).send({ message: "Dados inválidos!" });
@@ -19,7 +20,9 @@ export default class userController {
     }
     const userExists = await userModel.findOne({ email });
     if (userExists) {
-      res.status(403).send({ message: "Este email já está cadastrado em nossos sistemas!" });
+      res
+        .status(403)
+        .send({ message: "Este email já está cadastrado em nossos sistemas!" });
       return;
     }
 
@@ -33,12 +36,13 @@ export default class userController {
     try {
       const created = await userModel.create(usuario);
       res.status(200).send({ message: "Criado Usuário", created });
+      console.info("p", created);
     } catch (err) {
       console.info(err);
     }
   }
   //++++++++++++++++++++ User Login +++++++++++++++++++++++++++++++++++
-  static async login(req:any, res:any) {
+  static async login(req: any, res: any) {
     const { email, password } = req.body;
     // Validações (usuário e senha)
     if (!email || !password) {
@@ -53,28 +57,42 @@ export default class userController {
     }
 
     const userExists = await userModel.findOne({ email });
+    // console.info(userExists);
+    // console.info(email);
     if (userExists) {
-      const validatePassword = await tools.validatePassword(password, userExists.password);
+      const validatePassword = await tools.validatePassword(
+        password,
+        userExists.password
+      );
       if (!validatePassword) {
         res.status(403).send({ message: "Dados inválidos!" });
         return;
       }
-      const token = await auth.generateToken(userExists._id, userExists.email, userExists.name);
-      req.headers["Authorization"] = "Bearer " + token;
-      req.userId = userExists._id;
-      req.userName = userExists.name;
-      req.userEmail = userExists.email;
-      console.info(req.headers);
-      res.status(200).send({ message: "Logado!", user: userExists, token });
     }
+    const userId = userExists._id;
+    const userEmail = userExists.email;
+    const userName = userExists.name;
+
+    const secretKey = process.env.SECRET;
+    const options = { userId, userEmail, userName };
+
+    const token = jwt.sign(options, secretKey!, {expiresIn:"24h"});
+    req.headers["Authorization"] = "Bearer " + token;
+    req.userId = userExists._id;
+    req.userName = userExists.name;
+    req.userEmail = userExists.email;
+    console.info(req.headers);
+    userExists.password = null
+    res.status(200).send({ message: "Logado!", user: userExists, token });
     return;
   }
-  static async upDatePassword(req:any, res:any) {
+
+  static async upDatePassword(req: any, res: any) {
     res.status(200).send({ message: "Senha alterada!" });
     return;
   }
 
-  static async logout(req:any, res:any) {
+  static async logout(req: any, res: any) {
     req.headers["Authorization"] = "";
     req.userId = null;
     req.userName = null;
@@ -83,6 +101,4 @@ export default class userController {
     res.status(200).send({ message: "Logout efetuado com sucesso!" });
     return;
   }
-
-
-};
+}

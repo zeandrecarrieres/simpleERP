@@ -1,7 +1,7 @@
-const jwt = require("jsonwebtoken");
+import jwt from "jsonwebtoken";
 // eslint-disable-next-line no-undef
 const SECRET = process.env.TOKEN_SIGNE;
-module.exports = class Auth {
+export default class Auth {
   static async generateToken(id, email, name) {
     // eslint-disable-next-line no-undef
     const token = jwt.sign({ id, email, name }, process.env.TOKEN_SIGNE, {

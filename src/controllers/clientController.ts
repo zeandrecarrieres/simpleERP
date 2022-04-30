@@ -1,11 +1,12 @@
+import { Request, Response } from "express";
 import ClientModel from "../models/clientModel";
 
 let client = {};
 
 export default class clientController {
-    static async client(req:any, res:any) {
+    static async client(req:Request, res:Response) {
         const {
-            clientType,
+            type,
             name,
             fantasyName,
             CpfCnpj,
@@ -15,7 +16,7 @@ export default class clientController {
         } = req.body;
 
         client = {
-            clientType,
+            type,
             name,
             fantasyName,
             CpfCnpj,
@@ -30,6 +31,16 @@ export default class clientController {
             res.status(404).send({ message: "Insira todas as informações" });
             console.info(err);
             return;
+        }
+    }
+
+    static async list(req:Request, res:Response) {
+        try {
+            const listOfClients = await ClientModel.find({});
+            res.status(200).send(listOfClients)
+            return
+        } catch (err) {
+            console.info(err)
         }
     }
 }

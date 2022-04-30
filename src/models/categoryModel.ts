@@ -2,7 +2,7 @@ import mongoose from "../../database/conn";
 
 const CategoryModel = new mongoose.Schema(
     {
-        name: {
+        category: {
             type: String,
             required: true,
         }

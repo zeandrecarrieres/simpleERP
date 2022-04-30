@@ -11,6 +11,12 @@ const corsOptions = {
 
 server.use(cors(corsOptions));
 //Routers Injection
+
+//Admin
+import userRouter from "../src/admin/userRouter";
+server.use("/admin", userRouter);
+
+//Routes
 import homeRouter from "../src/routers/homeRouter";
 import stockRouter from "../src/routers/stockRouter";
 import clientRouter from "../src/routers/clientRouter";

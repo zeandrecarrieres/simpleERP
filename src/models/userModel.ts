@@ -2,15 +2,14 @@ import mongoose from "../../database/conn";
 
 const UserModel = new mongoose.Schema(
   {
-    email: {
-      type: String,
-      required: true,
-      unique: true
-    },
-    name: {
+      name: {
       type: String,
       required: true
     },
+     email: {
+      type: String,
+      required: true,
+          },
     password: {
       type: String,
       required: true

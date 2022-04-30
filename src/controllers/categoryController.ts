@@ -1,19 +1,17 @@
 import CategoryModel from "../models/categoryModel";
 
-let category = {};
+let data = {};
 
 export default class categoryController {
     static async category(req:any, res:any) {
         const {
-            name
+            category
         } = req.body;
 
-        category = {
-            name
-        };
+        data = { category }
 
         try {
-            const addCategory = await CategoryModel.create(category);
+            const addCategory = await CategoryModel.create(data);
             res.status(200).send({ message: "Categoria adicionada" });
             return;
         } catch (err) {
