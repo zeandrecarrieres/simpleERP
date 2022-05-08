@@ -6,6 +6,7 @@ let client = {};
 export default class clientController {
     static async client(req:Request, res:Response) {
         const {
+            clientSupplier,
             type,
             name,
             fantasyName,
@@ -16,6 +17,7 @@ export default class clientController {
         } = req.body;
 
         client = {
+            clientSupplier,
             type,
             name,
             fantasyName,
@@ -43,4 +45,21 @@ export default class clientController {
             console.info(err)
         }
     }
+
+    static async profile(req: Request, res: Response) {
+        const { id } = req.params
+       
+        try {
+            const profile = await ClientModel.findOne({ id });
+            // tratar ID - dever de casa
+            console.info(profile)
+            res.status(200).send(profile)
+            return
+        } catch (err) {
+            console.info(err)
+        }
+    }
+
+   
+
 }

@@ -6,7 +6,9 @@ const ProductModel = new mongoose.Schema(
             type: String,
             required: false,
         },
-        categoryId: {
+
+        //criar tabela de categorias
+        categoryId: { 
             type: String,
             required: true,
         },

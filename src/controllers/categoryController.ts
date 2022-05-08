@@ -20,4 +20,18 @@ export default class categoryController {
             return;
         }
     }
+
+
+    static async list(req:any, res:any) {
+      
+        try {
+            const listOfCategory = await CategoryModel.find({});
+            res.status(200).send(listOfCategory);
+            return;
+        } catch (err) {
+            res.status(404).send({ message: "Insira todas as informações" });
+            console.info(err);
+            return;
+        }
+    }
 }

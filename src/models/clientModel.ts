@@ -2,6 +2,10 @@ import mongoose from "../../database/conn";
 
 const ClientModel = new mongoose.Schema(
     {
+        clientSupplier: {
+            type: String,
+            required: true,
+        },
         type: {
             type: String,
             required: true,

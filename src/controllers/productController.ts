@@ -1,3 +1,4 @@
+import { Request, Response } from "express";
 import ProductModel from "../models/productModel";
 
 let product = {};
@@ -35,4 +36,29 @@ export default class productController {
             return;
         }
     }
+
+     static async list(req:Request, res:Response) {
+        try {
+            const listOfProducts = await ProductModel.find({});
+            res.status(200).send(listOfProducts)
+            return
+        } catch (err) {
+            console.info(err)
+        }
+     }
+    
+     static async profile(req: Request, res: Response) {
+        const { id } = req.query
+       
+        try {
+            const profile = await ProductModel.findOne({ id });
+            // tratar ID - dever de casa
+            console.info(profile)
+            res.status(200).send(profile)
+            return
+        } catch (err) {
+            console.info(err)
+        }
+    }
+
 }

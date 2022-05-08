@@ -2,6 +2,14 @@ import mongoose from "../../database/conn";
 
 const SupplierModel = new mongoose.Schema(
   {
+    clientSupplier: {
+      type: String,
+      required: true,
+    },
+    type: {
+      type: String,
+      required: true,
+    },
     name: {
       type: String,
       required: true,

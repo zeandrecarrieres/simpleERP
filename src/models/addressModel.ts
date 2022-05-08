@@ -6,7 +6,7 @@ const AddressModel = new mongoose.Schema(
       type: String,
       required: true,
     },
-    type: {
+    referenceType: {
       type: String,
       required: true,
     },

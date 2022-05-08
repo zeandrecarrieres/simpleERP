@@ -1,3 +1,4 @@
+import { Request, Response } from "express";
 import AddressModel from "../models/addressModel";
 
 let address = {};
@@ -6,7 +7,7 @@ export default class addressController {
     static async address(req:any, res:any) {
         const {
             referenceId,
-            type,
+            referenceType,
             street,
             number,
             complement,
@@ -20,7 +21,7 @@ export default class addressController {
 
         address = {
             referenceId,
-            type,
+            referenceType,
             street,
             number,
             complement,
@@ -41,4 +42,30 @@ export default class addressController {
             return;
         }
     }
+
+
+    static async list(req:Request, res:Response) {
+        try {
+            const listOfClients = await AddressModel.find({});
+            res.status(200).send(listOfClients)
+            return
+        } catch (err) {
+            console.info(err)
+        }
+    }
+
+    static async clientAddresses(req: Request, res: Response) {
+        const { referenceId, referenceType } = req.params;
+        console.info(req.params)
+        try {
+            const listOfAddresses = await AddressModel.find({ referenceId, referenceType });
+            console.info(listOfAddresses)
+            res.status(200).send(listOfAddresses)
+            return
+        } catch (err) {
+            console.info(err)
+        }
+    }
+
+    
 }
