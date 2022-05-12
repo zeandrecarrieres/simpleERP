@@ -1,4 +1,4 @@
-import SaleProductModel from "../models/saleProductModel";
+import TransactionProductModel from "../models/transactionProductModel";
 
 let sales = {};
 
@@ -22,7 +22,7 @@ export default class saleProductController {
         };
 
         try {
-            const addSaleProduct = await SaleProductModel.create(sales);
+            const addSaleProduct = await TransactionProductModel.create(sales);
             res.status(200).send({ message: "Lista de produtos adicionada" });
             return;
         } catch (err) {

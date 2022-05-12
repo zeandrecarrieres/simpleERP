@@ -7,7 +7,6 @@ router.post("/supplier", supplierController.supplier);
 router.get("/supplier", supplierController.list);
 router.get("/supplier/profile/:id", supplierController.profile);
 
-
 export default router;
 
 

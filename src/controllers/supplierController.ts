@@ -48,7 +48,7 @@ export default class supplierController {
     }
 
     static async profile(req: Request, res: Response) {
-        const { id } = req.query
+        const { id } = req.params
        
         try {
             const profile = await SupplierModel.findOne({ id });

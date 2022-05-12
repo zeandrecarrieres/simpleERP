@@ -26,8 +26,11 @@ import contactRouter from "../src/routers/contactRouter";
 import productRouter from "../src/routers/productRouter";
 import saleRouter from "../src/routers/saleRouter";
 import saleProductRouter from "../src/routers/saleProductRouter";
-import supplierRouter from "../src/routers/supplierRouter";
+import incomeRouter from "../src/routers/incomeRouter";
 import incomeProductRouter from "../src/routers/incomeProductRouter";
+import supplierRouter from "../src/routers/supplierRouter";
+import transactionProductsRouter from "../src/routers/transactionProductsRouter";
+
 
 server.use(homeRouter);
 server.use(stockRouter);
@@ -39,6 +42,8 @@ server.use(productRouter);
 server.use(saleRouter);
 server.use(saleProductRouter);
 server.use(supplierRouter);
+server.use(incomeRouter);
 server.use(incomeProductRouter);
+server.use(transactionProductsRouter);
 
 export default server;

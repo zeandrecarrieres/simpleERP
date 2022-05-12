@@ -1,4 +1,4 @@
-import IncomeProductModel from "../models/incomeProductModel";
+import IncomeProductModel from "../models/transactionProductModel";
 
 let income = {};
 

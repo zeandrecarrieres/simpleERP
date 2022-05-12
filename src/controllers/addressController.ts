@@ -67,5 +67,18 @@ export default class addressController {
         }
     }
 
+      static async supplierAddresses(req: Request, res: Response) {
+        const { referenceId, referenceType } = req.params;
+        console.info(req.params)
+        try {
+            const listOfAddresses = await AddressModel.find({ referenceId, referenceType });
+            console.info(listOfAddresses)
+            res.status(200).send(listOfAddresses)
+            return
+        } catch (err) {
+            console.info(err)
+        }
+    }
+
     
 }

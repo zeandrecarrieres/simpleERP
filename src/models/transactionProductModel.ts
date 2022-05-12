@@ -1,14 +1,14 @@
 import mongoose from "../../database/conn";
 
-const SaleProductModel = new mongoose.Schema(
+const TransactionProductModel = new mongoose.Schema(
     {
-        saleId: {
+        transactionId: {
             type: String,
             required: true,
         },
         productId: {
-            type: String,
-            required: true
+        type: String,
+        required: true
         },
         productQuantity: {
             type: Number,
@@ -29,4 +29,4 @@ const SaleProductModel = new mongoose.Schema(
     }
 );
 
-export default mongoose.model("saleProduct", SaleProductModel);
+export default mongoose.model("transactionProduct", TransactionProductModel);

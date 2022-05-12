@@ -1,32 +1,29 @@
 import { Request, Response } from "express";
-import SaleModel from "../models/saleModel";
+import IncomeModel from "../models/incomeModel";
 
-let sale = {};
+let income = {};
 
-export default class saleController {
-    static async sale(req:any, res:any) {
+export default class incomeController {
+    static async income(req:any, res:any) {
         const {
             type,
             NfNumber,
             IssueDate,
-            clientId,
-            SalesmanId,
-            Comission,
+            supplierId,
             freight,
             depenses,
-            paymentConditions, 
+            paymentConditions,
             dueDate,
             paymentMethod
+            
 
         } = req.body;
 
-        sale = {
+        income = { 
             type,
             NfNumber,
             IssueDate,
-            clientId,
-            SalesmanId,
-            Comission,
+            supplierId,
             freight,
             depenses,
             paymentConditions,
@@ -35,8 +32,8 @@ export default class saleController {
         };
 
         try {
-            const addSale = await SaleModel.create(sale);
-            res.status(200).send({ message: "Venda adicionada" });
+            const addIncome = await IncomeModel.create(income);
+            res.status(200).send({ message: "Entrada adicionada" });
             return;
         } catch (err) {
             res.status(404).send({ message: "Insira todas as informações" });
@@ -45,11 +42,11 @@ export default class saleController {
         }
     }
 
-    
+
       static async list(req:Request, res:Response) {
         try {
-            const listOfSales = await SaleModel.find({});
-            res.status(200).send(listOfSales)
+            const listOfIncomes = await IncomeModel.find({});
+            res.status(200).send(listOfIncomes)
             return
         } catch (err) {
             console.info(err)
@@ -57,10 +54,10 @@ export default class saleController {
       }
     
     static async detail(req: Request, res: Response) {
-        const { id } = req.params
+        const { _id } = req.params
        
         try {
-            const detail = await SaleModel.findOne({ id });
+            const detail = await IncomeModel.findOne({ _id });
             // tratar ID - dever de casa
             console.info(detail)
             res.status(200).send(detail)
@@ -69,6 +66,5 @@ export default class saleController {
             console.info(err)
         }
     }
-
-
+    
 }
