@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import SaleModel from "../models/saleModel";
+import SaleProductsModel from "../models/SaleProductsModel";
 
 let sale = {};
 
@@ -35,7 +35,7 @@ export default class saleController {
         };
 
         try {
-            const addSale = await SaleModel.create(sale);
+            const addSale = await SaleProductsModel.create(sale);
             res.status(200).send({ message: "Venda adicionada" });
             return;
         } catch (err) {
@@ -48,7 +48,7 @@ export default class saleController {
     
       static async list(req:Request, res:Response) {
         try {
-            const listOfSales = await SaleModel.find({});
+            const listOfSales = await SaleProductsModel.find({});
             res.status(200).send(listOfSales)
             return
         } catch (err) {
@@ -60,7 +60,7 @@ export default class saleController {
         const { id } = req.params
        
         try {
-            const detail = await SaleModel.findOne({ id });
+            const detail = await SaleProductsModel.findOne({ id });
             // tratar ID - dever de casa
             console.info(detail)
             res.status(200).send(detail)

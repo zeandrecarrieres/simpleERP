@@ -20,11 +20,11 @@ const IncomeModel = new mongoose.Schema(
       required: true,
     },
     freight: {
-    type: String,
+    type: Number,
     required: false,
     },
     depenses: {
-      type: String,
+      type: Number,
       required: false,
     },
     paymentConditions: {

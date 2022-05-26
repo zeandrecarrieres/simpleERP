@@ -48,7 +48,7 @@ export default class productController {
      }
     
      static async profile(req: Request, res: Response) {
-        const { id } = req.query
+        const { id } = req.params
        
         try {
             const profile = await ProductModel.findOne({ id });

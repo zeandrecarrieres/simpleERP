@@ -29,7 +29,8 @@ import saleProductRouter from "../src/routers/saleProductRouter";
 import incomeRouter from "../src/routers/incomeRouter";
 import incomeProductRouter from "../src/routers/incomeProductRouter";
 import supplierRouter from "../src/routers/supplierRouter";
-import transactionProductsRouter from "../src/routers/transactionProductsRouter";
+import testRouter from "../src/testAuth/testRouter"
+
 
 
 server.use(homeRouter);
@@ -44,6 +45,7 @@ server.use(saleProductRouter);
 server.use(supplierRouter);
 server.use(incomeRouter);
 server.use(incomeProductRouter);
-server.use(transactionProductsRouter);
+server.use(testRouter)
+
 
 export default server;

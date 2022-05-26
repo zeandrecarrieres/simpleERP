@@ -1,3 +1,4 @@
+import { Request, Response } from "express";
 import userModel from "../models/userModel";
 import tools from "../helpers/tools";
 import auth from "../auth";
@@ -101,4 +102,33 @@ export default class userController {
     res.status(200).send({ message: "Logout efetuado com sucesso!" });
     return;
   }
+  //++++++++++++++++++++ User List +++++++++++++++++++++++++++++++++++
+
+  static async list(req:Request, res:Response) {
+        try {
+            const listOfUsers = await userModel.find({});
+            res.status(200).send(listOfUsers)
+            return
+        } catch (err) {
+            console.info(err)
+        }
+    }
+
+  //++++++++++++++++++++ User Profile +++++++++++++++++++++++++++++++++++
+
+ static async profile(req: Request, res: Response) {
+        const { id } = req.params
+       
+        try {
+            const profile = await userModel.findOne({ id });
+            // tratar ID - dever de casa
+            console.info(profile)
+            res.status(200).send(profile)
+            return
+        } catch (err) {
+            console.info(err)
+        }
+    }
+
+
 }
