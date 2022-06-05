@@ -8,4 +8,6 @@ try {
   console.log(err);
 }
 
+mongoose.set('strictQuery', false);
+
 export default mongoose;

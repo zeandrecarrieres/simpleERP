@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import SaleProductsModel from "../models/SaleProductsModel";
+import SaleModel from "../models/saleModel";
 
 let sale = {};
 
@@ -7,11 +7,11 @@ export default class saleController {
     static async sale(req:any, res:any) {
         const {
             type,
-            NfNumber,
-            IssueDate,
+            nfNumber,
+            issueDate,
             clientId,
-            SalesmanId,
-            Comission,
+            salesmanId,
+            comission,
             freight,
             depenses,
             paymentConditions, 
@@ -22,20 +22,20 @@ export default class saleController {
 
         sale = {
             type,
-            NfNumber,
-            IssueDate,
+            nfNumber,
+            issueDate,
             clientId,
-            SalesmanId,
-            Comission,
+            salesmanId,
+            comission,
             freight,
             depenses,
-            paymentConditions,
+            paymentConditions, 
             dueDate,
             paymentMethod
         };
 
         try {
-            const addSale = await SaleProductsModel.create(sale);
+            const addSale = await SaleModel.create(sale);
             res.status(200).send({ message: "Venda adicionada" });
             return;
         } catch (err) {
@@ -48,7 +48,7 @@ export default class saleController {
     
       static async list(req:Request, res:Response) {
         try {
-            const listOfSales = await SaleProductsModel.find({});
+            const listOfSales = await SaleModel.find({});
             res.status(200).send(listOfSales)
             return
         } catch (err) {
@@ -60,7 +60,7 @@ export default class saleController {
         const { id } = req.params
        
         try {
-            const detail = await SaleProductsModel.findOne({ id });
+            const detail = await SaleModel.findOne({ id });
             // tratar ID - dever de casa
             console.info(detail)
             res.status(200).send(detail)

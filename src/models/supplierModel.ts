@@ -1,11 +1,9 @@
 import mongoose from "../../database/conn";
 
+
 const SupplierModel = new mongoose.Schema(
   {
-    clientSupplier: {
-      type: String,
-      required: true,
-    },
+    // income: {type: Schema.Types.ObjectId, ref:"income"},
     type: {
       type: String,
       required: true,
@@ -29,6 +27,7 @@ const SupplierModel = new mongoose.Schema(
   },
   {
     timestamps: true,
+     strict: false
   }
 );
 

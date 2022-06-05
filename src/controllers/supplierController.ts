@@ -39,7 +39,7 @@ export default class supplierController {
 
     static async list(req:Request, res:Response) {
         try {
-            const listOfSupplier = await SupplierModel.find({});
+            const listOfSupplier = await SupplierModel.find({}).sort({name: 1});
             res.status(200).send(listOfSupplier)
             return
         } catch (err) {

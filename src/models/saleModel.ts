@@ -7,11 +7,15 @@ const SaleModel = new mongoose.Schema(
       type: String,
       required: true,
     },
-    NfNumber: {
+    nfNumber: {
       type: String,
       required: false,
     },
-    IssueDate: {
+    issueDate: {
+      type: String,
+      required: true,
+    },
+    clientId: {
       type: String,
       required: true,
     },
@@ -22,10 +26,6 @@ const SaleModel = new mongoose.Schema(
     },
     comission: {
       type: Number,
-      required: true,
-    },
-    clientId: {
-      type: String,
       required: true,
     },
     freight: {

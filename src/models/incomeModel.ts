@@ -1,4 +1,6 @@
 import mongoose from "../../database/conn";
+import { Schema } from "mongoose"; 
+
 
 const IncomeModel = new mongoose.Schema(
   {
@@ -15,10 +17,11 @@ const IncomeModel = new mongoose.Schema(
       type: String,
       required: false,
     },
-    supplierId: {
-      type: String,
-      required: true,
-    },
+    supplierId: {type: Schema.Types.ObjectId, ref:"supplier"},
+    //  supplierId: {
+    //   type: String,
+    //   required: true,
+    // },
     freight: {
     type: Number,
     required: false,
@@ -42,7 +45,10 @@ const IncomeModel = new mongoose.Schema(
   },
   {
     timestamps: true,
-  }
+    strict: false
+  },
+  
+ 
 );
 
 export default mongoose.model("income", IncomeModel);

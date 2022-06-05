@@ -1,5 +1,8 @@
 import { Request, Response } from "express";
 import IncomeModel from "../models/incomeModel";
+import supplierModel from "../models/supplierModel";
+
+
 
 let income = {};
 
@@ -9,7 +12,7 @@ export default class incomeController {
             type,
             NfNumber,
             IssueDate,
-            supplierId,
+            clientSupplier,
             freight,
             depenses,
             paymentConditions,
@@ -23,7 +26,7 @@ export default class incomeController {
             type,
             NfNumber,
             IssueDate,
-            supplierId,
+            clientSupplier,
             freight,
             depenses,
             paymentConditions,
@@ -45,7 +48,9 @@ export default class incomeController {
 
       static async list(req:Request, res:Response) {
         try {
-            const listOfIncomes = await IncomeModel.find({});
+            const listOfIncomes = await IncomeModel.find({}).populate('supplier')
+            //  const listOfIncomes = await IncomeModel.find({}).populate('supplier').setOptions({strictQuery: false})
+            console.log(listOfIncomes)
             res.status(200).send(listOfIncomes)
             return
         } catch (err) {
