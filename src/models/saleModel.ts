@@ -1,4 +1,5 @@
 import mongoose from "../../database/conn";
+import { Schema } from "mongoose"; 
 
 const SaleModel = new mongoose.Schema(
   {
@@ -15,10 +16,7 @@ const SaleModel = new mongoose.Schema(
       type: String,
       required: true,
     },
-    clientId: {
-      type: String,
-      required: true,
-    },
+    clientId:  { type: Schema.Types.ObjectId, ref: "client", required: true },
     salesmanId: {
       //podemos usar o usuário - colocar como obrigatorio (tava dando erro)
       type: String,

@@ -18,20 +18,20 @@ export default class incomeProductsController {
         //     productId,
         //     productQuantity,
         //     discount,
-        //     value
+        //     value 
         // };
 
 
         const data = req.body
 
-        console.log(data)
+        // console.log(data)
 
         data.map(async(product:object) => {
             
             if (product===null) return
              const response = await IncomeProductsModel.create(product);
                
-                console.log(response)
+                // console.log(response)
            
         })
 

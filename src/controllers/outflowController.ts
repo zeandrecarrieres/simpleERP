@@ -1,8 +1,8 @@
-import saleModel from "../models/saleModel";
+import incomeModel from "../models/incomeModel";
 
 let data = {};
 
-export default class inflowController {
+export default class outflowController {
     // static async category(req:any, res:any) {
     //     const {
     //         category
@@ -25,8 +25,8 @@ export default class inflowController {
     static async list(req:any, res:any) {
       
         try {
-            const listOfInflow = await saleModel.find({}).populate('clientId').setOptions({strictQuery: false})
-            res.status(200).send(listOfInflow);
+            const listOfOutflow = await incomeModel.find({}).populate('supplierId').setOptions({strictQuery: false})
+            res.status(200).send(listOfOutflow);
             return;
         } catch (err) {
             res.status(404).send({ message: "Insira todas as informações" });

@@ -31,6 +31,7 @@ import incomeProductRouter from "../src/routers/incomeProductRouter";
 import supplierRouter from "../src/routers/supplierRouter";
 import testRouter from "../src/testAuth/testRouter";
 import inflowRouter from "../src/routers/inflowRouter";
+import outflowRouter from "../src/routers/outflowRouter";
 
 
 
@@ -49,6 +50,7 @@ server.use(incomeRouter);
 server.use(incomeProductRouter);
 server.use(testRouter)
 server.use(inflowRouter)
+server.use(outflowRouter)
 
 
 export default server;

@@ -17,7 +17,14 @@ export default class incomeController {
             depenses,
             paymentConditions,
             dueDate,
-            paymentMethod
+            paymentMethod,
+            // incomeProductsId: { 
+            //     // transactionId: undefined,
+            //     productId,
+            //     productQuantity,
+            //     discount,
+            //     value,
+            // },
             
 
         } = req.body;
@@ -31,7 +38,14 @@ export default class incomeController {
             depenses,
             paymentConditions,
             dueDate,
-            paymentMethod
+            paymentMethod,
+            //   incomeProductsId: { 
+            //     // transactionId,
+            //     productId,
+            //     productQuantity,
+            //     discount,
+            //     value,
+            // },
         };
 
         try {

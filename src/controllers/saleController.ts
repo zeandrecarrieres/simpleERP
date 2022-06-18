@@ -48,7 +48,7 @@ export default class saleController {
     
       static async list(req:Request, res:Response) {
         try {
-            const listOfSales = await SaleModel.find({});
+            const listOfSales = await SaleModel.find({}).populate('clientId').setOptions({strictQuery: false})
             res.status(200).send(listOfSales)
             return
         } catch (err) {

@@ -1,5 +1,6 @@
 import mongoose from "../../database/conn";
 
+
 const IncomeProductsModel = new mongoose.Schema(
     {
         transactionId: {

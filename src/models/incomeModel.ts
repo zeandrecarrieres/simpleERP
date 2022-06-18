@@ -18,11 +18,7 @@ const IncomeModel = new mongoose.Schema(
       required: false,
     },
     supplierId: { type: Schema.Types.ObjectId, ref: "supplier", required: true },
-    
-    //  supplierId: {
-    //   type: String,
-    //   required: true,
-    // },
+   
     freight: {
     type: Number,
     required: false,
@@ -43,6 +39,7 @@ const IncomeModel = new mongoose.Schema(
       type: String,
       required: true,
     },
+    incomeProductsId: { type: Schema.Types.ObjectId, ref: "incomeProductsModel", required: false }
   },
   {
     timestamps: true,
